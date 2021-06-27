@@ -3,40 +3,40 @@ import Navbar from './Navbar'
 import UsuarioService from '../services/usuario-service'
 
 
-export default class Repositorios extends React.Component{
+export default class Starred extends React.Component{
 
     state = {
         mensagemErro: "Nenhum usuário para ser exibido.",
         nomeUsuario: this.props.history.location.pathname.split('/')[2],
-        userRepos: []
+        userStarred: []
     }
 
-    getRepositoryList = async (username) => {
-        this.setState(await UsuarioService.getUserRepos(username))
+    getStarredList = async (username) => {
+        this.setState(await UsuarioService.getUserStarred(username))
     }
 
-    renderRepositoryList() {
-        if (this.state.userRepos){
-            if (this.state.userRepos.length === 0) {
-                this.getRepositoryList(this.state.nomeUsuario)
+    renderStarredList() {
+        if (this.state.userStarred){
+            if (this.state.userStarred.length === 0) {
+                this.getStarredList(this.state.nomeUsuario)
             }
     
-            let listaRepos = []
+            let listaStarred = []
     
-            for (let repo of this.state.userRepos) {
-                listaRepos.push(
+            for (let star of this.state.userStarred) {
+                listaStarred.push(
                     <div class="card mb-3">
                         <div className='card-header'>
-                            {repo.full_name}
+                            {star.full_name}
                         </div>
                         <div class="card-body">
-                            {repo.description || 'Repositório sem descrição.'}
+                            {star.description || 'Repositório sem descrição.'}
                         </div>
                     </div>
                 )
             }
     
-            return listaRepos
+            return listaStarred
         }
         else {
             return <div className="alert alert-light" role="alert">
@@ -53,7 +53,7 @@ export default class Repositorios extends React.Component{
                 <Navbar location={this.props.history.location}/>
 
                 <div className='container mt-3'>
-                    {this.renderRepositoryList()}
+                    {this.renderStarredList()}
                 </div>
             </div>
         )
