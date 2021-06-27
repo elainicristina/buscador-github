@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 export default class Usuario extends React.Component{
 
     state = {
@@ -8,7 +7,7 @@ export default class Usuario extends React.Component{
         nomeUsuario: ""
     }
 
-    
+
     procurandoUsuario = async () => {
 
         try {
@@ -36,7 +35,7 @@ export default class Usuario extends React.Component{
     }
 
 
-    digitar = (e) => {
+    controlandoInputDeBusca = (e) => {
         this.setState({nomeUsuario: e.target.value})
     }
 
@@ -47,7 +46,7 @@ export default class Usuario extends React.Component{
             if (props) {
                 return (
                     <div className="card mb-3">
-                        <button className="btn btn-primary-outline" onClick={this.props.mudarParaRepositorio}  >
+                        <div className="btn btn-primary-outline" >
                             <div className="row">
                                 <div className="col-md-4">
                                     <img className='w-100' src={props.avatar_url} alt={props.name}/>
@@ -56,10 +55,12 @@ export default class Usuario extends React.Component{
                                     <div className="card-body">
                                         <h5 className="card-title">{props.name}</h5>
                                         <p className="card-text">{props.bio}</p>
+                                        <button onClick={this.props.mudarParaRepositorio}className="btn btn-primary-outline">{props.repos_url}</button>
+
                                     </div>
                                 </div>
                             </div>
-                        </button>
+                        </div>
                      </div>
                 )
             }
@@ -84,7 +85,7 @@ export default class Usuario extends React.Component{
                         className="form-control" 
                         value={this.state.nomeUsuario} 
                         placeholder="Nome de usuário"
-                        onChange={this.digitar}
+                        onChange={this.controlandoInputDeBusca}
                         onKeyPress={this.enterProcurarUsuario}
                     />
                     <div className="input-group-append">

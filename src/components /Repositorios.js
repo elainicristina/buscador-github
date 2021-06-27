@@ -5,24 +5,18 @@ import React from 'react'
 export default class Repositorio extends React.Component{
    
 
-        listaDeRepos = async () => {
-
-            try {
-                const url = `https://api.github.com/users/${this.props.stateProps}/repos`
-                const response = await axios.get(url)
+        listaDeRepos = () => {
+            const url = `https://api.github.com/users/${this.props.mudarParaRepositorio}/repos`
+            axios.get(url)
+             .then((res) => {
+                 console.log(res.id.repos_url)
                 this.setState({
-                    userData: response.data.repos_url
+                    userData: res.data.repos_url
                 })
-                console.log((await response))
-            
-            }   
-                catch(err) {
-                    this.setState({
-                        mensagemErro: 'Sem repositorio disponivel',
-                        userData: undefined
-                    })
-                }
-            }
+             }).catch((err) => {
+                console.log(err.message)
+             })
+        }
 
     render() {
         return (

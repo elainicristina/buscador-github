@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default class App extends React.Component {
 
   state = {
-    telaAtual: 'usuario'
+    telaAtual: 'usuario',
+    idUsuario: null
   }
 
   mudancaDeTela = () => {
@@ -14,7 +15,7 @@ export default class App extends React.Component {
       case 'usuario':
         return <Usuario mudarParaRepositorio={this.mudarParaRepositorio} />
       case 'repositorios':
-        return <Repositorio mudarParaUsuarios={this.mudarParaUsuarios} stateProps = {this.state.nomeUsuario} />
+        return <Repositorio mudarParaUsuarios={this.mudarParaUsuarios} />
         default:
           return <div>ERRO</div>
     }
@@ -24,8 +25,8 @@ export default class App extends React.Component {
     this.setState({telaAtual: 'usuario'})
   }
 
-  mudarParaRepositorio = (url) => {
-    this.setState({telaAtual: 'repositorios'})
+  mudarParaRepositorio = () => {
+    this.setState({telaAtual: 'repositorios' })
   }
 
   render() {
