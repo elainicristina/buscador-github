@@ -11,7 +11,7 @@ npm run start
 
 # Link para live demo:
 
-[second-income.surge.sh](second-income.surge.sh)
+[https://second-income.surge.sh](https://second-income.surge.sh)
 
 # Imagens do projeto:
 
