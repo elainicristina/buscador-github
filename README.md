@@ -11,7 +11,7 @@ npm run start
 
 # Link para live demo:
 
-[tasty-wing.surge.sh](tasty-wing.surge.sh)
+[https://stupid-sidewalk.surge.sh/busca](https://stupid-sidewalk.surge.sh/busca)
 
 # Imagens do projeto:
 
